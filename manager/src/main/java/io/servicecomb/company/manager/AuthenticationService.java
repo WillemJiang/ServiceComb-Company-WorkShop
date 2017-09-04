@@ -17,7 +17,6 @@ package io.servicecomb.company.manager;
 
 import static org.springframework.http.HttpStatus.REQUEST_TIMEOUT;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,7 +58,7 @@ public class AuthenticationService {
     });
   }
 
-  @HystrixCommand(fallbackMethod = "timeout")
+  //@HystrixCommand(fallbackMethod = "timeout")
   public ResponseEntity<String> validate(String token) {
     logger.info("Validating token {}", token);
     ResponseEntity<String> responseEntity = restTemplate.postForEntity(
